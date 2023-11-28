@@ -11,6 +11,10 @@ const openai = new OpenAI({
   apiKey: "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",
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.post("/chat", async (req, res) => {
   console.log("Entered the API Endpoint");
   const {
@@ -46,7 +50,7 @@ app.post("/chat", async (req, res) => {
         Focus on highlighting the unique features and benefits of the product...`;
   console.log(marketingPrompt);
   try {
-    console.log("Trying ")
+    console.log("Trying ");
     const chatResponse = await openai.chat.completions.create({
       messages: [{ role: "user", content: marketingPrompt }],
       model: "gpt-3.5-turbo",
