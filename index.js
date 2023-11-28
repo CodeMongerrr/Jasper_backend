@@ -8,7 +8,7 @@ const port = 7000;
 app.use(bodyParser.json());
 app.use(cors());
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 app.post("/chat", async (req, res) => {
@@ -46,11 +46,12 @@ app.post("/chat", async (req, res) => {
         Focus on highlighting the unique features and benefits of the product...`;
   console.log(marketingPrompt);
   try {
+    console.log("Trying ")
     const chatResponse = await openai.chat.completions.create({
       messages: [{ role: "user", content: marketingPrompt }],
       model: "gpt-3.5-turbo",
     });
-    console.log(chatResponse.choices[0].message);
+    console.log(chatResponse);
     res.json({ response: chatResponse.choices[0].message });
   } catch (error) {
     res.status(500).json({ error: error.message });
